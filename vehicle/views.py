@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, generics
 
 from vehicle.models import Car, Moto, Milage
-from vehicle.serializers import CarSerializer, MotoSerializer, MilageSerializer, MotoMilageSerializer
+from vehicle.serializers import CarSerializer, MotoSerializer, MilageSerializer, MotoMilageSerializer, \
+    MotoCreateSerializer
 
 
 class CarViewSet(viewsets.ModelViewSet):
@@ -11,7 +12,7 @@ class CarViewSet(viewsets.ModelViewSet):
 
 
 class MotoCreateAPIView(generics.CreateAPIView):
-    serializer_class = MotoSerializer
+    serializer_class = MotoCreateSerializer
 
 
 class MotoListAPIView(generics.ListAPIView):
@@ -38,6 +39,6 @@ class MilageCreateAPIView(generics.CreateAPIView):
 
 
 class MotoMilageListAPIView(generics.ListAPIView):
-    queryset = Milage.objects.filter(noto__isnull=False)
+    queryset = Milage.objects.filter(moto__isnull=False)
     serializer_class = MotoMilageSerializer
 
