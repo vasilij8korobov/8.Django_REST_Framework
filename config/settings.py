@@ -139,6 +139,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework_permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',  # AllowAny - открыто для всех, но нужны изменения во Views; IsAuthenticated - только для авторизованных
     ]
 }
