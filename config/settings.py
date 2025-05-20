@@ -143,7 +143,10 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    '<http://localhost:8000>',  # Замените на адрес вашего фронтенд-сервера
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",  # Замените на адрес вашего фронтенд-сервера
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -152,3 +155,6 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
+
+CUR_API_URL = 'https://app.currencyapi.com/'
+CUR_API_KEY = 'cur_live_SDMkTTtFBEMUiMtWNLBIkFDhzeHKUGrK1cpgzyMh'
