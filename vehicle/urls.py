@@ -21,6 +21,6 @@ urlpatterns = [
 
     # milage
     path('milage/', MilageListAPIView.as_view(), name='milage-list'),
-    path('milage/create', MilageCreateAPIView.as_view(), name='milage-create'),
+    path('milage/create/', MilageCreateAPIView.as_view(), name='milage-create'),
     path('moto/milage/', MotoMilageListAPIView.as_view(), name='moto-milage'),
 ] + router.urls
