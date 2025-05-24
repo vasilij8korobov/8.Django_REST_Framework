@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'drf_yasg',
     'corsheaders',
+    'django_celery_beat',   # для работ с периодическими задачами в Celery.
 
     'users',
     'vehicle',
@@ -175,3 +176,11 @@ CELERY_TASK_TRACK_STARTED = True
 
 # Максимальное время на выполнение задачи
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# Настройки для Celery  #  расписание Celery
+CELERY_BEAT_SCHEDULE = {
+    'task-name': {
+        'task': 'myapp.tasks.my_task',  # Путь к задаче
+        'schedule': timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
+    },
+}
